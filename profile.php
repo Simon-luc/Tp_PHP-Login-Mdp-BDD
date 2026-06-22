@@ -49,7 +49,6 @@ if((int)$utilisateur['id'] != (int)$_SESSION['user_id']){
     Utilisateur introuvable <br>;
 <?php endif; ?>
 
-
 <a href="dashboard.php"> Retour Vers le dashboard</a>
 
 <p class="mb-3"><a href="list_users.php">Admin ? par ici !</a><p>
