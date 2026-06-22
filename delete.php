@@ -7,7 +7,7 @@ if(isset($_GET['id'])){
         $stmt= $pdo -> prepare("DELETE FROM utilisateurs WHERE id = :id");
         $stmt -> execute(['id' => (int) $_GET['id']]);
 
-        header("Location: connexion.php");
+        header("Location: list_users.php");
         exit();
     }
 }

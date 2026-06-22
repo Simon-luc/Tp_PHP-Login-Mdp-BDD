@@ -16,6 +16,11 @@ $utilisateur = $stmt->fetch();
 
 }
 
+if((int)$utilisateur['id'] != (int)$_SESSION['user_id']){
+    header("Location: dashboard.php");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +44,7 @@ $utilisateur = $stmt->fetch();
             <?php if ($utilisateur): ?>
    <p>Profil de : <?= $utilisateur['email'] ?> </p>
    <p>Crée le :  <?= $utilisateur['cree_le'] ?></p>
-    <a href="delete.php?id=<?=  $utilisateur['id']  ?>"> Supprimer le profil</a>
+    <a href="delete.php?id=<?=  $utilisateur['id']  ?>"> Supprimer Mon profil</a>
 <?php else : ?>
     Utilisateur introuvable <br>;
 <?php endif; ?>
@@ -47,7 +52,7 @@ $utilisateur = $stmt->fetch();
 
 <a href="dashboard.php"> Retour Vers le dashboard</a>
 
-<p class="mb-3"><a href="list_users.php">Admin ? par ici !<p>
+<p class="mb-3"><a href="list_users.php">Admin ? par ici !</a><p>
 </div>
 </body>
 </html>

@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (password_verify($password, $user['mot_de_passe'])) {
             // Réussit -> header location dashboard
             $_SESSION['pseudo'] = $user['pseudo'];
+            $_SESSION['user_id'] = $user['id'];
             header("Location: dashboard.php");
             exit();
         } else {
@@ -24,9 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         };
     }
 };
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -53,44 +53,32 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 <body class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
     <div class="card shadow-sm p-4" style="width: 100%; max-width: 420px;">
         <h1 class="fw-bold text-uppercase fs-4 mb-3">Connecte Toi !</h1>
-         <div class="card shadow-sm p-4" style="width: 100%; max-width: 420px;">
-        
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-        </head>
-        <body>
-            
-        </body>
-        </html></a></p>
 
-        <?php if (!empty($errors)): ?>
-            <div class="alert alert-danger">
-                <ul class="mb-0">
-                    <?php foreach ($errors as $error): ?>
-                        <li><?= htmlspecialchars($error) ?></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        <?php endif; ?>
+            <?php if (!empty($errors)): ?>
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        <?php foreach ($errors as $error): ?>
+                            <li><?= htmlspecialchars($error) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
 
-        <form method="POST">
-            <div class="mb-3">
-                <label for="pseudo" class="form-label">Pseudo</label>
-                <input type="text" name="pseudo" id="pseudo" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="mot_de_passe" class="form-label">Mot de passe</label>
-                <input type="text" name="mot_de_passe" id="mot_de_passe" class="form-control" required>
-            </div>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="pseudo" class="form-label">Pseudo</label>
+                    <input type="text" name="pseudo" id="pseudo" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mot_de_passe" class="form-label">Mot de passe</label>
+                    <input type="text" name="mot_de_passe" id="mot_de_passe" class="form-control" required>
+                </div>
 
-            <button type="submit" class="btn btn-primary">Valide</button>
-            <a href="inscription.php">Je veux m'inscrire</a>
+                <button type="submit" class="btn btn-primary">Valide</button>
+                <a href="inscription.php">Je veux m'inscrire</a>
 
-        </form>
-    </div>
+            </form>
+        </div>
 
 </body>
 
