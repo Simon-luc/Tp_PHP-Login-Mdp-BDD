@@ -14,14 +14,10 @@ header("Location: connexion.php");
 </head>
 <body>
     
-
-
-
-
-
 <a href="logout.php">Déconnexion</a>
 
-
+</body>
+</html>
 
 
 

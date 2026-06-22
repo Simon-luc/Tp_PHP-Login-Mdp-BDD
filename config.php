@@ -4,6 +4,7 @@ if(session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+
 $host = "localhost";
 $dbname = "dwwm_auth";
 $user = "root";

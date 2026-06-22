@@ -7,7 +7,6 @@ if (isset($_SESSION['user_id'])) {
     exit;
 }
 
-
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -65,39 +64,55 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Inscription</title>
+    <style>
+        .form-control:focus {
+            border-color: #1265d1;
+            box-shadow: none;
+        }
+        a:hover,
+        a:focus {
+            color: #be448f !important;
+        }
+    </style>
 </head>
 
-<body>
-    <h1>Créer un son compte</h1>
-    <p><a href="connexion.php">Déjà inscrit ? Connectez-vous</a></p>
+<body class="d-flex align-items-center justify-content-center min-vh-100 bg-dark">
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 420px;">
+        <h1 class="fw-bold text-uppercase fs-4 mb-1">Créer un son compte</h1>
+        <p class="mb-3"><a href="connexion.php">Déjà inscrit ? Connectez-vous</a></p><br>
 
-    <?php if (!empty($errors)): ?>
-        <div style="color: red;">
-            <ul>
-                <?php foreach ($errors as $error): ?>
-                    <li><?= htmlspecialchars($error) ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    <?php endif; ?>
+        <?php if (!empty($errors)): ?>
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    <?php foreach ($errors as $error): ?>
+                        <li><?= htmlspecialchars($error) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
 
-    <form method="POST">
-        <div>
-            <label for="pseudo">Pseudo</label>
-            <input type="text" name="pseudo" id="pseudo" required>
-        </div>
-        <div>
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" required>
-        </div>
-        <div>
-            <label for="mot_de_passe">Mot de passe</label>
-            <input type="text" name="mot_de_passe" id="mot_de_passe" required>
-        </div>
-        <div>
-            <label for="mot_de_passe_confirm">Confirmation de mot de passe</label>
-            <input type="text" name="mot_de_passe_confirm" id="mot_de_passe_confirm" required>
-        </div>
-        <button type="submit">S'incrire</button>
-    </form>
+        <form method="POST">
+            <div>
+                <label for="pseudo" class="form-label">Pseudo</label>
+                <input type="text" name="pseudo" id="pseudo" class="form-control" required><br>
+            </div>
+            <div>
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" id="email" class="form-control" required><br>
+            </div>
+            <div>
+                <label for="mot_de_passe" class="form-label">Mot de passe</label>
+                <input type="text" name="mot_de_passe" id="mot_de_passe" class="form-control" required><br>
+            </div>
+            <div>
+                <label for="mot_de_passe_confirm" class="form-label">Confirmation de mot de passe</label>
+                <input type="text" name="mot_de_passe_confirm" id="mot_de_passe_confirm" class="form-control" required><br>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">S'incrire</button>
+        </form>
+    </div>
+</body>
+</html>
